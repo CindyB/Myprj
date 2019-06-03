@@ -1,4 +1,5 @@
-package  ui; 
+package  model; 
+
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -21,14 +22,16 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import model.StudentVO;
 import model.ProfessorVO;
-import model.DepartmentVO;
 import model.CourseVO;
-import model.CourseDetailsVO;
 import model.DatabaseConnect;
 import model.DescribeTableVO;
-
+import model.StudentVO;
+import model.CourseDetailsVO;
+/**
+ * @author JI
+ *
+ */
 
 public class PrimaryPanel extends JPanel {
 
@@ -72,9 +75,9 @@ public class PrimaryPanel extends JPanel {
 	JTextField txtAttend_Score;
 	JTextField txtMiddle_Score;
 	JTextField txtFinal_Score;
-	JTextField txtetc_Score;
+	JTextField txtetcScore;
 	JTextField txtTotal_Score;
-	JTextField txtGrade_Point;
+	JTextField txtGrade_Podouble;
 	
 	JTextField txtStudentWhere;
 	JTextField txtProfessorWhere;
@@ -84,18 +87,18 @@ public class PrimaryPanel extends JPanel {
 
 	private BtnListener btnL;
 
-	private DatabaseConnect dbConnect;
+	//private DatabaseConnect dbConnect;
 
 	public PrimaryPanel() {
 		// db connect
-		dbConnect = new DatabaseConnect();
+//		dbConnect = new DatabaseConnect();
 
 		// Listener
 		btnL = new BtnListener();
 
 		// primary panel
 		setBackground(Color.white);
-		setPreferredSize(new Dimension(1000, 640));
+		setPreferredSize(new Dimension(1500, 900));
 		setLayout(null);
 
 		setPage();
@@ -104,7 +107,7 @@ public class PrimaryPanel extends JPanel {
 	public void setPage() {
 
 		mainPanel = new JPanel();
-		mainPanel.setBounds(100, 150, 800, 450);
+		mainPanel.setBounds(50, 150, 1400, 700);
 		mainPanel.setBackground(new Color(245, 245, 245));
 		mainPanel.setLayout(null);
 
@@ -129,7 +132,7 @@ public class PrimaryPanel extends JPanel {
 
 	private JPanel getStudentTable(String condition) {
 		JPanel jPanel = new JPanel();
-		jPanel.setBounds(0, 0, 800, 450);
+		jPanel.setBounds(0, 0, 1300, 600);
 		jPanel.setBackground(new Color(245, 245, 245));
 		jPanel.setLayout(null);
 		
@@ -164,7 +167,7 @@ public class PrimaryPanel extends JPanel {
 		jPanel.add(lbInsert);
 		
 //		Student_ID
-		JLabel Student_ID = new JLabel("Student_ID");
+		JLabel Student_ID = new JLabel("ID");
 		Student_ID.setBounds(80,170,100,40);
 		Student_ID.setFont(new Font("Verdana", Font.PLAIN,15));
 		jPanel.add(Student_ID);
@@ -174,103 +177,103 @@ public class PrimaryPanel extends JPanel {
 		jPanel.add(txtStudent_ID);
 		
 //		Student_Name
-		JLabel Student_Name = new JLabel("Student_Name");
-		Student_Name.setBounds(80,170,100,40);
+		JLabel Student_Name = new JLabel("Name");
+		Student_Name.setBounds(170,170,100,40);
 		Student_Name.setFont(new Font("Verdana", Font.PLAIN,15));
 		jPanel.add(Student_Name);
 		
 		txtStudent_Name = new JTextField();
-		txtStudent_Name.setBounds(100,180,60,30);
+		txtStudent_Name.setBounds(220,180,60,30);
 		jPanel.add(txtStudent_Name);
 		
 //		Student_RRN
-		JLabel Student_RRN = new JLabel("Student_RRN");
-		Student_RRN.setBounds(170,170,100,40);
+		JLabel Student_RRN = new JLabel("RRN");
+		Student_RRN.setBounds(290,170,100,40);
 		Student_RRN.setFont(new Font("Verdana", Font.PLAIN,15));
 		jPanel.add(Student_RRN);
 		
 		txtStudent_RRN = new JTextField();
-		txtStudent_RRN.setBounds(220,180,60,30);
+		txtStudent_RRN.setBounds(320,180,60,30);
 		jPanel.add(txtStudent_RRN);
 		
 //		Student_Address
-		JLabel Student_Address = new JLabel("Student_Address");
-		Student_Address.setBounds(290,170,100,40);
+		JLabel Student_Address = new JLabel("Address");
+		Student_Address.setBounds(390,170,100,40);
 		Student_Address.setFont(new Font("Verdana", Font.PLAIN,15));
 		jPanel.add(Student_Address);
 		
 		txtStudent_Address = new JTextField();
-		txtStudent_Address.setBounds(320,180,60,30);
+		txtStudent_Address.setBounds(430,180,60,30);
 		jPanel.add(txtStudent_Address);
 		
-//		Student_Phone
-		JLabel Student_Phone = new JLabel("Student_Phone");
-		Student_Phone.setBounds(390,170,100,40);
+//		StudentCall
+		JLabel Student_Phone = new JLabel("Phone");
+		Student_Phone.setBounds(500,170,100,40);
 		Student_Phone.setFont(new Font("Verdana", Font.PLAIN,15));
 		jPanel.add(Student_Phone);
 		
 		txtStudent_Phone = new JTextField();
-		txtStudent_Phone.setBounds(430,180,60,30);
+		txtStudent_Phone.setBounds(530,180,60,30);
 		jPanel.add(txtStudent_Phone);
 		
 //		Student_Email
-		JLabel Student_Email = new JLabel("Student_Email");
-		Student_Email.setBounds(500,170,100,40);
+		JLabel Student_Email = new JLabel("Email");
+		Student_Email.setBounds(600,170,70,40);
 		Student_Email.setFont(new Font("Verdana", Font.PLAIN,15));
 		jPanel.add(Student_Email);
 
 		txtStudent_Email = new JTextField();
-		txtStudent_Email.setBounds(530,180,60,30);
+		txtStudent_Email.setBounds(660,180,60,30);
 		jPanel.add(txtStudent_Email);
 		
 //		Student_Image
-		JLabel Student_Image = new JLabel("Student_Image");
-		Student_Image.setBounds(600,170,100,40);
+		JLabel Student_Image = new JLabel("Image");
+		Student_Image.setBounds(720,170,80,40);
 		Student_Image.setFont(new Font("Verdana", Font.PLAIN,15));
 		jPanel.add(Student_Image);
 		
 		txtStudent_Image = new JTextField();
-		txtStudent_Image.setBounds(665,180,60,30);
+		txtStudent_Image.setBounds(800,180,60,30);
 		jPanel.add(txtStudent_Image);
 		
 //		Department_ID
-		JLabel Department_ID = new JLabel("Department_ID");
-		Department_ID.setBounds(600,170,100,40);
+		JLabel Department_ID = new JLabel("D_ID");
+		Department_ID.setBounds(860,170,70,40);
 		Department_ID.setFont(new Font("Verdana", Font.PLAIN,15));
 		jPanel.add(Department_ID);
 		
 		txtDepartment_ID = new JTextField();
-		txtDepartment_ID.setBounds(665,180,60,30);
+		txtDepartment_ID.setBounds(930,180,60,30);
 		jPanel.add(txtDepartment_ID);
 		
 //		Professor_ID
-		JLabel Professor_ID = new JLabel("Professor_ID");
-		Professor_ID.setBounds(600,170,100,40);
+		JLabel Professor_ID = new JLabel("P_ID");
+		Professor_ID.setBounds(990,170,80,40);
 		Professor_ID.setFont(new Font("Verdana", Font.PLAIN,15));
 		jPanel.add(Professor_ID);
 		
 		txtProfessor_ID = new JTextField();
-		txtProfessor_ID.setBounds(665,180,60,30);
+		txtProfessor_ID.setBounds(1090,180,60,30);
 		jPanel.add(txtProfessor_ID);
 
 //      Semester			
-		JLabel Semester = new JLabel("Semester");
-		Semester.setBounds(600,170,100,40);
+		JLabel Semester = new JLabel("Seme");
+		Semester.setBounds(1150,170,60,40);
 		Semester.setFont(new Font("Verdana", Font.PLAIN,15));
 		jPanel.add(Semester);
 		
 		txtSemester = new JTextField();
-		txtSemester.setBounds(665,180,60,30);
+		txtSemester.setBounds(1210,180,60,30);
 		jPanel.add(txtSemester);
 		
 //      Year
 		JLabel Year = new JLabel("Year");
-		Year.setBounds(600,170,100,40);
+		Year.setBounds(1250,170,40,40);
 		Year.setFont(new Font("Verdana", Font.PLAIN,15));
 		jPanel.add(Year);
 		
 		txtYear = new JTextField();
-		txtYear.setBounds(665,180,60,30);
+		txtYear.setBounds(1380,180,60,30);
 		jPanel.add(txtYear);
 		
 //		btnInsert
@@ -284,56 +287,56 @@ public class PrimaryPanel extends JPanel {
 
 		JTable jTable = new JTable();
 		DefaultTableModel model = new DefaultTableModel();
-
-		ArrayList<DescribeTableVO> arrDescribeTableVO =           
-				dbConnect.getTableDescription("Student");
-		Object[] columnsName = new Object[arrDescribeTableVO.size()];
-		for (int i = 0; i < arrDescribeTableVO.size(); i++) {
-			columnsName[i] = arrDescribeTableVO.get(i).getColumn_name();
-		}
-		model.setColumnIdentifiers(columnsName);
-
-		Object[] rowData = new Object[arrDescribeTableVO.size()];
-		System.out.println(arrDescribeTableVO.size());
-		ArrayList<StudentVO> arrStudentVO = dbConnect.selectStudent(condition);
-		for (int i = 0; i < arrStudentVO.size(); i++) {
-				
-			rowData[0] = arrStudentVO.get(i).getStudent_ID();
-			rowData[1] = arrStudentVO.get(i).getStudent_Name();
-			rowData[2] = arrStudentVO.get(i).getStudent_RRN();
-			rowData[3] = arrStudentVO.get(i).getStudent_Address();
-			rowData[4] = arrStudentVO.get(i).getStudent_Phone();
-			rowData[5] = arrStudentVO.get(i).getStudent_Email();
-			rowData[6] = arrStudentVO.get(i).getStudent_Image();
-			rowData[7] = arrStudentVO.get(i).getDepartment_ID();
-			rowData[8] = arrStudentVO.get(i).getProfessor_ID();
-			rowData[9] = arrStudentVO.get(i).getSemester();
-			rowData[10] = arrStudentVO.get(i).getYear();
-			
-			model.addRow(rowData);
-		}
-
-		jTable.setModel(model);
-		jTable.setPreferredScrollableViewportSize(jTable.getPreferredSize());
-		jTable.setFillsViewportHeight(true);
-		jTable.getTableHeader().setFont(new Font("Verdana", Font.PLAIN, 17));
-		jTable.setFont(new Font("Verdana", Font.PLAIN, 17));
-		jTable.setRowHeight(20);
-		jTable.getTableHeader().setReorderingAllowed(false);
-
-		jScollPane = new JScrollPane(jTable);
-		jScollPane.setPreferredSize(new Dimension(650, 150));
-		jScollPane.setBounds(75, 280, 650, 150);
-//		jScollPane.getVerticalScrollBar().setValue(jScollPane.getVerticalScrollBar().getMaximum());
-		
-		jPanel.add(jScollPane);
+//
+//		ArrayList<DescribeTableVO> arrDescribeTableVO =               /// 이거 뭐하는 과정인지...
+//				//dbConnect.getTableDescription("Student");
+//		Object[] columnsName = new Object[arrDescribeTableVO.size()];
+//		for (int i = 0; i < arrDescribeTableVO.size(); i++) {
+//			columnsName[i] = arrDescribeTableVO.get(i).getColumn_name();
+//		}
+//		model.setColumnIdentifiers(columnsName);
+//
+//		Object[] rowData = new Object[arrDescribeTableVO.size()];
+//		System.out.println(arrDescribeTableVO.size());
+//		ArrayList<StudentVO> arrStudentVO = dbConnect.selectStudent(condition);
+//		for (int i = 0; i < arrStudentVO.size(); i++) {
+//				
+//			rowData[0] = arrStudentVO.get(i).getStudent_ID();
+//			rowData[1] = arrStudentVO.get(i).getStudent_Name();
+//			rowData[2] = arrStudentVO.get(i).getStudent_RRN();
+//			rowData[3] = arrStudentVO.get(i).getStudent_Address();
+//			rowData[4] = arrStudentVO.get(i).getStudent_Phone();
+//			rowData[5] = arrStudentVO.get(i).getStudent_Email();
+//			rowData[6] = arrStudentVO.get(i).getStudent_Image();
+//			rowData[7] = arrStudentVO.get(i).getDepartment_ID();
+//			rowData[8] = arrStudentVO.get(i).getProfessor_ID();
+//			rowData[9] = arrStudentVO.get(i).getSemester();
+//			rowData[10] = arrStudentVO.get(i).getYear();
+//			
+//			model.addRow(rowData);
+//		}
+//
+//		jTable.setModel(model);
+//		jTable.setPreferredScrollableViewportSize(jTable.getPreferredSize());
+//		jTable.setFillsViewportHeight(true);
+//		jTable.getTableHeader().setFont(new Font("Verdana", Font.PLAIN, 17));
+//		jTable.setFont(new Font("Verdana", Font.PLAIN, 17));
+//		jTable.setRowHeight(20);
+//		jTable.getTableHeader().setReorderingAllowed(false);
+//
+//		jScollPane = new JScrollPane(jTable);
+//		jScollPane.setPreferredSize(new Dimension(650, 150));
+//		jScollPane.setBounds(75, 280, 650, 150);
+////		jScollPane.getVerticalScrollBar().setValue(jScollPane.getVerticalScrollBar().getMaximum());
+//		
+//		jPanel.add(jScollPane);
 		
 		return jPanel;
 	}
 
 	private JPanel getProfessorTable(String condition) {
 		JPanel jPanel = new JPanel();
-		jPanel.setBounds(0, 0, 800, 450);
+		jPanel.setBounds(0, 0, 1300, 600);
 		jPanel.setBackground(new Color(245, 245, 245));
 		jPanel.setLayout(null);
 		
@@ -368,7 +371,7 @@ public class PrimaryPanel extends JPanel {
 		jPanel.add(lbInsert);
 		
 //		Professor_ID
-		JLabel Professor_ID = new JLabel("Professor_ID");
+		JLabel Professor_ID = new JLabel("ID");
 		Professor_ID.setBounds(80,170,100,40);
 		Professor_ID.setFont(new Font("Verdana", Font.PLAIN,15));
 		jPanel.add(Professor_ID);
@@ -378,7 +381,7 @@ public class PrimaryPanel extends JPanel {
 		jPanel.add(txtProfessor_ID);
 		
 //		Professor_Name
-		JLabel Professor_Name = new JLabel("Professor_Name");
+		JLabel Professor_Name = new JLabel("Name");
 		Professor_Name.setBounds(210,170,100,40);
 		Professor_Name.setFont(new Font("Verdana", Font.PLAIN,15));
 		jPanel.add(Professor_Name);
@@ -388,7 +391,7 @@ public class PrimaryPanel extends JPanel {
 		jPanel.add(txtProfessor_Name);
 		
 //		Professor_RRN
-		JLabel Professor_RRN = new JLabel("Professor_RRN");
+		JLabel Professor_RRN = new JLabel("RRN");
 		Professor_RRN.setBounds(360,170,100,40);
 		Professor_RRN.setFont(new Font("Verdana", Font.PLAIN,15));
 		jPanel.add(Professor_RRN);
@@ -398,24 +401,24 @@ public class PrimaryPanel extends JPanel {
 		jPanel.add(txtProfessor_RRN);
 		
 //		Professor_Address
-		JLabel Professor_Address = new JLabel("Professor_Address");
+		JLabel Professor_Address = new JLabel("Address");
 		Professor_Address.setBounds(500,170,100,40);
 		Professor_Address.setFont(new Font("Verdana", Font.PLAIN,15));
 		jPanel.add(Professor_Address);
 		
 		txtProfessor_Address = new JTextField();
-		txtProfessor_Address.setBounds(540,180,60,30);
+		txtProfessor_Address.setBounds(600,180,60,30);
 		jPanel.add(txtProfessor_Address);
 		
 		
 //		Professor_Phone
-		JLabel Professor_Phone = new JLabel("Professor_Phone");
-		Professor_Phone.setBounds(610,170,100,40);
+		JLabel Professor_Phone = new JLabel("Phone");
+		Professor_Phone.setBounds(680,170,100,40);
 		Professor_Phone.setFont(new Font("Verdana", Font.PLAIN,15));
 		jPanel.add(Professor_Phone);
 		
 		txtProfessor_Phone = new JTextField();
-		txtProfessor_Phone.setBounds(710,180,60,30);
+		txtProfessor_Phone.setBounds(790,180,60,30);
 		jPanel.add(txtProfessor_Phone);
 		
 		
@@ -428,49 +431,49 @@ public class PrimaryPanel extends JPanel {
 		JTable jTable = new JTable();
 		DefaultTableModel model = new DefaultTableModel();
 
-		ArrayList<DescribeTableVO> arrDescribeTableVO = dbConnect.getTableDescription("Professor");
-		Object[] columnsName = new Object[arrDescribeTableVO.size()];
-		for (int i = 0; i < arrDescribeTableVO.size(); i++) {
-			columnsName[i] = arrDescribeTableVO.get(i).getColumn_name();
-		}
-		model.setColumnIdentifiers(columnsName);
-
-		Object[] rowData = new Object[arrDescribeTableVO.size()];
-		ArrayList<ProfessorVO> arrProfessorVO = dbConnect.selectProfessor(condition);
-		for (int i = 0; i < arrProfessorVO.size(); i++) {
-			rowData[0] = arrProfessorVO.get(i).getProfessor_ID();
-			rowData[1] = arrProfessorVO.get(i).getProfessor_Name();
-			rowData[2] = arrProfessorVO.get(i).getProfessor_RRN();
-			rowData[3] = arrProfessorVO.get(i).getProfessor_Address();
-			rowData[4] = arrProfessorVO.get(i).getProfessor_Phone();
-			rowData[5] = arrProfessorVO.get(i).getProfessor_Email();
-			rowData[6] = arrProfessorVO.get(i).getProfessor_Image();
-			rowData[7] = arrProfessorVO.get(i).getDepartment_ID();
-			
-
-			model.addRow(rowData);
-		}
-
-		jTable.setModel(model);
-		jTable.setPreferredScrollableViewportSize(jTable.getPreferredSize());
-		jTable.setFillsViewportHeight(true);
-		jTable.getTableHeader().setFont(new Font("Verdana", Font.PLAIN, 17));
-		jTable.setFont(new Font("Verdana", Font.PLAIN, 17));
-		jTable.setRowHeight(20);
-		
-		jScollPane = new JScrollPane(jTable);
-		jScollPane.setPreferredSize(new Dimension(650, 150));
-		jScollPane.setBounds(75, 280, 650, 150);
-//		jScollPane.getVerticalScrollBar().setValue(jScollPane.getVerticalScrollBar().getMaximum());
-		
-		jPanel.add(jScollPane);
+//		ArrayList<DescribeTableVO> arrDescribeTableVO = dbConnect.getTableDescription("Professor");
+//		Object[] columnsName = new Object[arrDescribeTableVO.size()];
+//		for (int i = 0; i < arrDescribeTableVO.size(); i++) {
+//			columnsName[i] = arrDescribeTableVO.get(i).getColumn_name();
+//		}
+//		model.setColumnIdentifiers(columnsName);
+//
+//		Object[] rowData = new Object[arrDescribeTableVO.size()];
+//		ArrayList<ProfessorVO> arrProfessorVO = dbConnect.selectProfessor(condition);
+//		for (int i = 0; i < arrProfessorVO.size(); i++) {
+//			rowData[0] = arrProfessorVO.get(i).getProfessor_ID();
+//			rowData[1] = arrProfessorVO.get(i).getProfessor_Name();
+//			rowData[2] = arrProfessorVO.get(i).getProfessor_RRN();
+//			rowData[3] = arrProfessorVO.get(i).getProfessor_Address();
+//			rowData[4] = arrProfessorVO.get(i).getProfessor_Phone();
+//			rowData[5] = arrProfessorVO.get(i).getProfessor_Email();
+//			rowData[6] = arrProfessorVO.get(i).getProfessor_Image();
+//			rowData[7] = arrProfessorVO.get(i).getDepartment_ID();
+//			
+//
+//			model.addRow(rowData);
+//		}
+//
+//		jTable.setModel(model);
+//		jTable.setPreferredScrollableViewportSize(jTable.getPreferredSize());
+//		jTable.setFillsViewportHeight(true);
+//		jTable.getTableHeader().setFont(new Font("Verdana", Font.PLAIN, 17));
+//		jTable.setFont(new Font("Verdana", Font.PLAIN, 17));
+//		jTable.setRowHeight(20);
+//		
+//		jScollPane = new JScrollPane(jTable);
+//		jScollPane.setPreferredSize(new Dimension(650, 150));
+//		jScollPane.setBounds(75, 280, 650, 150);
+////		jScollPane.getVerticalScrollBar().setValue(jScollPane.getVerticalScrollBar().getMaximum());
+//		
+//		jPanel.add(jScollPane);
 
 		return jPanel;
 	}
 
 	private JPanel getDepartmentTable(String condition) {
 		JPanel jPanel = new JPanel();
-		jPanel.setBounds(0, 0, 800, 450);
+		jPanel.setBounds(0, 0, 1300, 600);
 		jPanel.setBackground(new Color(245, 245, 245));
 		jPanel.setLayout(null);
 		
@@ -505,7 +508,7 @@ public class PrimaryPanel extends JPanel {
 		jPanel.add(lbInsert);
 		
 //		Department_ID
-		JLabel Department_ID = new JLabel("Department_ID");
+		JLabel Department_ID = new JLabel("ID");
 		Department_ID.setBounds(80,170,100,40);
 		Department_ID.setFont(new Font("Verdana", Font.PLAIN,15));
 		jPanel.add(Department_ID);
@@ -515,7 +518,7 @@ public class PrimaryPanel extends JPanel {
 		jPanel.add(txtDepartment_ID);
 		
 //		Department_Name
-		JLabel Department_Name = new JLabel("Department_Name");
+		JLabel Department_Name = new JLabel("Name");
 		Department_Name.setBounds(180,170,100,40);
 		Department_Name.setFont(new Font("Verdana", Font.PLAIN,15));
 		jPanel.add(Department_Name);
@@ -525,14 +528,15 @@ public class PrimaryPanel extends JPanel {
 		jPanel.add(txtDepartment_Name);
 		
 //		Department_Phone
-		JLabel Department_Phone = new JLabel("Department_Phone");
+		JLabel Department_Phone = new JLabel("Phone");
 		Department_Phone.setBounds(280,170,100,40);
 		Department_Phone.setFont(new Font("Verdana", Font.PLAIN,15));
 		jPanel.add(Department_Phone);
 		
 		txtDepartment_Phone = new JTextField();
 		txtDepartment_Phone.setBounds(320,180,60,30);
-		jPanel.add(txtDepartment_Phone);		
+		jPanel.add(txtDepartment_Phone);
+		
 
 		
 //		btnInsert
@@ -545,44 +549,44 @@ public class PrimaryPanel extends JPanel {
 		JTable jTable = new JTable();
 		DefaultTableModel model = new DefaultTableModel();
 
-		ArrayList<DescribeTableVO> arrDescribeTableVO = dbConnect.getTableDescription("Department");
-		Object[] columnsName = new Object[arrDescribeTableVO.size()];
-		for (int i = 0; i < arrDescribeTableVO.size(); i++) {
-			columnsName[i] = arrDescribeTableVO.get(i).getColumn_name();
-		}
-		model.setColumnIdentifiers(columnsName);
-
-		Object[] rowData = new Object[arrDescribeTableVO.size()];
-		ArrayList<DepartmentVO> arrDepartmentVO = dbConnect.selectDepartment(condition);
-		for (int i = 0; i < arrDepartmentVO.size(); i++) {
-			rowData[0] = arrDepartmentVO.get(i).getDepartment_ID();
-			rowData[1] = arrDepartmentVO.get(i).getDepartment_Name();
-			rowData[2] = arrDepartmentVO.get(i).getDepartment_Phone();
-
-			model.addRow(rowData);
-		}
-
-		jTable.setModel(model);
-		jTable.setPreferredScrollableViewportSize(jTable.getPreferredSize());
-		jTable.setFillsViewportHeight(true);
-		jTable.getTableHeader().setFont(new Font("Verdana", Font.PLAIN, 17));
-		jTable.setFont(new Font("Verdana", Font.PLAIN, 17));
-		jTable.setRowHeight(20);
-		jTable.getTableHeader().setReorderingAllowed(false);
-
-		jScollPane = new JScrollPane(jTable);
-		jScollPane.setPreferredSize(new Dimension(650, 150));
-		jScollPane.setBounds(75, 280, 650, 150);
-//		jScollPane.getVerticalScrollBar().setValue(jScollPane.getVerticalScrollBar().getMaximum());
-		
-		jPanel.add(jScollPane);
+//		ArrayList<DescribeTableVO> arrDescribeTableVO = dbConnect.getTableDescription("Department");
+//		Object[] columnsName = new Object[arrDescribeTableVO.size()];
+//		for (int i = 0; i < arrDescribeTableVO.size(); i++) {
+//			columnsName[i] = arrDescribeTableVO.get(i).getColumn_name();
+//		}
+//		model.setColumnIdentifiers(columnsName);
+//
+//		Object[] rowData = new Object[arrDescribeTableVO.size()];
+//		ArrayList<DepartmentVO> arrDepartmentVO = dbConnect.selectDepartment(condition);
+//		for (int i = 0; i < arrDepartmentVO.size(); i++) {
+//			rowData[0] = arrDepartmentVO.get(i).getDepartment_ID();
+//			rowData[1] = arrDepartmentVO.get(i).getDepartment_Name();
+//			rowData[2] = arrDepartmentVO.get(i).getDepartment_Phone();
+//
+//			model.addRow(rowData);
+//		}
+//
+//		jTable.setModel(model);
+//		jTable.setPreferredScrollableViewportSize(jTable.getPreferredSize());
+//		jTable.setFillsViewportHeight(true);
+//		jTable.getTableHeader().setFont(new Font("Verdana", Font.PLAIN, 17));
+//		jTable.setFont(new Font("Verdana", Font.PLAIN, 17));
+//		jTable.setRowHeight(20);
+//		jTable.getTableHeader().setReorderingAllowed(false);
+//
+//		jScollPane = new JScrollPane(jTable);
+//		jScollPane.setPreferredSize(new Dimension(650, 150));
+//		jScollPane.setBounds(75, 280, 650, 150);
+////		jScollPane.getVerticalScrollBar().setValue(jScollPane.getVerticalScrollBar().getMaximum());
+//		
+//		jPanel.add(jScollPane);
 
 		return jPanel;
 	}
 	
 	private JPanel getCourseTable(String condition) {
 		JPanel jPanel = new JPanel();
-		jPanel.setBounds(0, 0, 800, 450);
+		jPanel.setBounds(0, 0, 1300, 600);
 		jPanel.setBackground(new Color(245, 245, 245));
 		jPanel.setLayout(null);
 		
@@ -597,10 +601,10 @@ public class PrimaryPanel extends JPanel {
 		lbWhere.setFont(new Font("Verdana", Font.PLAIN,17));
 		jPanel.add(lbWhere);
 		
-		txtCourseWhere = new JTextField();
-		txtCourseWhere.setBounds(150,65,600,30);
-		txtCourseWhere.setFont(new Font("Verdana", Font.PLAIN,15));
-		jPanel.add(txtCourseWhere);
+		txtDepartmentWhere = new JTextField();
+		txtDepartmentWhere.setBounds(150,65,600,30);
+		txtDepartmentWhere.setFont(new Font("Verdana", Font.PLAIN,15));
+		jPanel.add(txtDepartmentWhere);
 		
 //		btnSelect
 		JButton btnSelect = new JButton("Select");
@@ -617,73 +621,73 @@ public class PrimaryPanel extends JPanel {
 		jPanel.add(lbInsert);
 		
 //		Course_ID
-		JLabel Course_ID = new JLabel("Course_ID");
-		Course_ID.setBounds(80,170,100,40);
+		JLabel Course_ID = new JLabel("C_ID");
+		Course_ID.setBounds(10,170,70,60);
 		Course_ID.setFont(new Font("Verdana", Font.PLAIN,15));
 		jPanel.add(Course_ID);
 		
 		txtCourse_ID = new JTextField();
-		txtCourse_ID.setBounds(110,180,60,30);
+		txtCourse_ID.setBounds(70,180,60,30);
 		jPanel.add(txtCourse_ID);
 		
 //		Professor_ID
-		JLabel Professor_ID = new JLabel("Professor_ID");
-		Professor_ID.setBounds(180,170,100,40);
+		JLabel Professor_ID = new JLabel("P_ID");
+		Professor_ID.setBounds(130,170,70,40);
 		Professor_ID.setFont(new Font("Verdana", Font.PLAIN,15));
 		jPanel.add(Professor_ID);
 		
 		txtProfessor_ID = new JTextField();
-		txtProfessor_ID.setBounds(210,180,60,30);
+		txtProfessor_ID.setBounds(200,180,60,30);
 		jPanel.add(txtProfessor_ID);
 		
 //		Course_Title
-		JLabel Course_Title = new JLabel("Course_Title");
-		Course_Title.setBounds(280,170,100,40);
+		JLabel Course_Title = new JLabel("C_Title");
+		Course_Title.setBounds(260,170,80,40);
 		Course_Title.setFont(new Font("Verdana", Font.PLAIN,15));
 		jPanel.add(Course_Title);
 		
 		txtCourse_Title = new JTextField();
-		txtCourse_Title.setBounds(320,180,60,30);
+		txtCourse_Title.setBounds(340,180,60,30);
 		jPanel.add(txtCourse_Title);
 		
 //		Credit
 		JLabel Credit = new JLabel("Credit");
-		Credit.setBounds(390,170,100,40);
+		Credit.setBounds(410,170,80,40);
 		Credit.setFont(new Font("Verdana", Font.PLAIN,15));
 		jPanel.add(Credit);
 		
 		txtCredit = new JTextField();
-		txtCredit.setBounds(455,180,60,30);
+		txtCredit.setBounds(490,180,60,30);
 		jPanel.add(txtCredit);
 		
 //		Class_Time
-		JLabel Class_Time = new JLabel("Class_Time");
-		Class_Time.setBounds(525,170,100,40);
+		JLabel Class_Time = new JLabel("Time");
+		Class_Time.setBounds(550,170,60,40);
 		Class_Time.setFont(new Font("Verdana", Font.PLAIN,15));
 		jPanel.add(Class_Time);
 
 		txtClass_Time = new JTextField();
-		txtClass_Time.setBounds(580,180,60,30);
+		txtClass_Time.setBounds(610,180,60,30);
 		jPanel.add(txtClass_Time);
 		
 //		Room
 		JLabel Room = new JLabel("Room");
-		Room.setBounds(650,170,100,40);
+		Room.setBounds(680,170,60,40);
 		Room.setFont(new Font("Verdana", Font.PLAIN,15));
 		jPanel.add(Room);
 		
 		txtRoom = new JTextField();
-		txtRoom.setBounds(720,180,60,30);
+		txtRoom.setBounds(740,180,60,30);
 		jPanel.add(txtRoom);
 		
 //		Department_ID
-		JLabel Department_ID = new JLabel("Department_ID");
-		Department_ID.setBounds(650,170,100,40);
+		JLabel Department_ID = new JLabel("D_ID");
+		Department_ID.setBounds(800,170,70,40);
 		Department_ID.setFont(new Font("Verdana", Font.PLAIN,15));
 		jPanel.add(Department_ID);
 		
 		txtDepartment_ID = new JTextField();
-		txtDepartment_ID.setBounds(720,180,60,30);
+		txtDepartment_ID.setBounds(870,180,60,30);
 		jPanel.add(txtDepartment_ID);
 		
 //		btnInsert
@@ -696,48 +700,48 @@ public class PrimaryPanel extends JPanel {
 		JTable jTable = new JTable();
 		DefaultTableModel model = new DefaultTableModel();
 
-		ArrayList<DescribeTableVO> arrDescribeTableVO = dbConnect.getTableDescription("Course");
-		Object[] columnsName = new Object[arrDescribeTableVO.size()];
-		for (int i = 0; i < arrDescribeTableVO.size(); i++) {
-			columnsName[i] = arrDescribeTableVO.get(i).getColumn_name();
-		}
-		model.setColumnIdentifiers(columnsName);
-
-		Object[] rowData = new Object[arrDescribeTableVO.size()];
-		ArrayList<CourseVO> arrCourseVO = dbConnect.selectCourse(condition);
-		for (int i = 0; i < arrCourseVO.size(); i++) {
-			rowData[0] = arrCourseVO.get(i).getCourse_ID();
-			rowData[1] = arrCourseVO.get(i).getProfessor_ID();
-			rowData[2] = arrCourseVO.get(i).getCourse_Title();
-			rowData[3] = arrCourseVO.get(i).getCredit();
-			rowData[4] = arrCourseVO.get(i).getClass_Time();
-			rowData[5] = arrCourseVO.get(i).getRoom();
-			rowData[6] = arrCourseVO.get(i).getDepartment_ID();
-			
-			model.addRow(rowData);
-		}
-
-		jTable.setModel(model);
-		jTable.setPreferredScrollableViewportSize(jTable.getPreferredSize());
-		jTable.setFillsViewportHeight(true);
-		jTable.getTableHeader().setFont(new Font("Verdana", Font.PLAIN, 17));
-		jTable.setFont(new Font("Verdana", Font.PLAIN, 17));
-		jTable.setRowHeight(20);
-		jTable.getTableHeader().setReorderingAllowed(false);
-
-		jScollPane = new JScrollPane(jTable);
-		jScollPane.setPreferredSize(new Dimension(650, 150));
-		jScollPane.setBounds(75, 280, 650, 150);
-//		jScollPane.getVerticalScrollBar().setValue(jScollPane.getVerticalScrollBar().getMaximum());
-		
-		jPanel.add(jScollPane);
+//		ArrayList<DescribeTableVO> arrDescribeTableVO = dbConnect.getTableDescription("Course");
+//		Object[] columnsName = new Object[arrDescribeTableVO.size()];
+//		for (int i = 0; i < arrDescribeTableVO.size(); i++) {
+//			columnsName[i] = arrDescribeTableVO.get(i).getColumn_name();
+//		}
+//		model.setColumnIdentifiers(columnsName);
+//
+//		Object[] rowData = new Object[arrDescribeTableVO.size()];
+//		ArrayList<CourseVO> arrCourseVO = dbConnect.selectCourse(condition);
+//		for (int i = 0; i < arrCourseVO.size(); i++) {
+//			rowData[0] = arrCourseVO.get(i).getCourse_ID();
+//			rowData[1] = arrCourseVO.get(i).getProfessor_ID();
+//			rowData[2] = arrCourseVO.get(i).getCourse_Title();
+//			rowData[3] = arrCourseVO.get(i).getCredit();
+//			rowData[4] = arrCourseVO.get(i).getClass_Time();
+//			rowData[5] = arrCourseVO.get(i).getRoom();
+//			rowData[6] = arrCourseVO.get(i).getDepartment_ID();
+//			
+//			model.addRow(rowData);
+//		}
+//
+//		jTable.setModel(model);
+//		jTable.setPreferredScrollableViewportSize(jTable.getPreferredSize());
+//		jTable.setFillsViewportHeight(true);
+//		jTable.getTableHeader().setFont(new Font("Verdana", Font.PLAIN, 17));
+//		jTable.setFont(new Font("Verdana", Font.PLAIN, 17));
+//		jTable.setRowHeight(20);
+//		jTable.getTableHeader().setReorderingAllowed(false);
+//
+//		jScollPane = new JScrollPane(jTable);
+//		jScollPane.setPreferredSize(new Dimension(650, 150));
+//		jScollPane.setBounds(75, 280, 650, 150);
+////		jScollPane.getVerticalScrollBar().setValue(jScollPane.getVerticalScrollBar().getMaximum());
+//		
+//		jPanel.add(jScollPane);
 
 		return jPanel;
 	}
 
 	private JPanel getCourseDetailsTable(String condition) {
 		JPanel jPanel = new JPanel();
-		jPanel.setBounds(0, 0, 800, 450);
+		jPanel.setBounds(0, 0, 1300, 800);
 		jPanel.setBackground(new Color(245, 245, 245));
 		jPanel.setLayout(null);
 		
@@ -772,83 +776,83 @@ public class PrimaryPanel extends JPanel {
 		jPanel.add(lbInsert);
 		
 //		Student_ID
-		JLabel Student_ID = new JLabel("Student_ID");
-		Student_ID.setBounds(80,170,100,40);
+		JLabel Student_ID = new JLabel("S_ID");
+		Student_ID.setBounds(10,170,80,40);
 		Student_ID.setFont(new Font("Verdana", Font.PLAIN,15));
 		jPanel.add(Student_ID);
 		
 		txtStudent_ID = new JTextField();
-		txtStudent_ID.setBounds(110,180,60,30);
+		txtStudent_ID.setBounds(90,180,60,30);
 		jPanel.add(txtStudent_ID);
 		
 //		Course_ID
-		JLabel Course_ID = new JLabel("Course_ID");
-		Course_ID.setBounds(180,170,100,40);
+		JLabel Course_ID = new JLabel("C_ID");
+		Course_ID.setBounds(160,170,80,40);
 		Course_ID.setFont(new Font("Verdana", Font.PLAIN,15));
 		jPanel.add(Course_ID);
 		
 		txtCourse_ID = new JTextField();
-		txtCourse_ID.setBounds(210,180,60,30);
+		txtCourse_ID.setBounds(240,180,60,30);
 		jPanel.add(txtCourse_ID);
 		
 //		Professor_ID
-		JLabel Professor_ID = new JLabel("Professor_ID");
-		Professor_ID.setBounds(280,170,100,40);
+		JLabel Professor_ID = new JLabel("P_ID");
+		Professor_ID.setBounds(330,170,80,40);
 		Professor_ID.setFont(new Font("Verdana", Font.PLAIN,15));
 		jPanel.add(Professor_ID);
 		
 		txtProfessor_ID = new JTextField();
-		txtProfessor_ID.setBounds(320,180,60,30);
+		txtProfessor_ID.setBounds(410,180,60,30);
 		jPanel.add(txtProfessor_ID);
 		
 //		AttendScore
-		JLabel Attend_Score = new JLabel("Attend_Score");
-		Attend_Score.setBounds(390,170,100,40);
-		Attend_Score.setFont(new Font("Verdana", Font.PLAIN,15));
-		jPanel.add(Attend_Score);
+		JLabel AttendScore = new JLabel("A_Score");
+		AttendScore.setBounds(470,170,90,40);
+		AttendScore.setFont(new Font("Verdana", Font.PLAIN,15));
+		jPanel.add(AttendScore);
 		
 		txtAttend_Score = new JTextField();
-		txtAttend_Score.setBounds(455,180,60,30);
+		txtAttend_Score.setBounds(560,180,60,30);
 		jPanel.add(txtAttend_Score);
 		
 //		MiddleScore
-		JLabel Middle_Score = new JLabel("Middle_Score");
-		Middle_Score.setBounds(525,170,100,40);
-		Middle_Score.setFont(new Font("Verdana", Font.PLAIN,15));
-		jPanel.add(Middle_Score);
+		JLabel MiddleScore = new JLabel("M_Score");
+		MiddleScore.setBounds(620,170,90,40);
+		MiddleScore.setFont(new Font("Verdana", Font.PLAIN,15));
+		jPanel.add(MiddleScore);
 
 		txtMiddle_Score = new JTextField();
-		txtMiddle_Score.setBounds(580,180,60,30);
+		txtMiddle_Score.setBounds(710,180,60,30);
 		jPanel.add(txtMiddle_Score);
 		
 //		FinalScore
-		JLabel Final_Score = new JLabel("Final_Score");
-		Final_Score.setBounds(650,170,100,40);
-		Final_Score.setFont(new Font("Verdana", Font.PLAIN,15));
-		jPanel.add(Final_Score);
+		JLabel FinalScore = new JLabel("F_Score");
+		FinalScore.setBounds(770,170,90,40);
+		FinalScore.setFont(new Font("Verdana", Font.PLAIN,15));
+		jPanel.add(FinalScore);
 		
 		txtFinal_Score = new JTextField();
-		txtFinal_Score.setBounds(720,180,60,30);
+		txtFinal_Score.setBounds(860,180,60,30);
 		jPanel.add(txtFinal_Score);
 
 //		etcScore
-		JLabel etc_Score = new JLabel("etc_Score");
-		etc_Score.setBounds(650,170,100,40);
-		etc_Score.setFont(new Font("Verdana", Font.PLAIN,15));
-		jPanel.add(etc_Score);
+		JLabel etcScore = new JLabel("e_Score");
+		etcScore.setBounds(920,170,90,40);
+		etcScore.setFont(new Font("Verdana", Font.PLAIN,15));
+		jPanel.add(etcScore);
 		
-		txtetc_Score = new JTextField();
-		txtetc_Score.setBounds(720,180,60,30);
-		jPanel.add(txtetc_Score);
+		txtetcScore = new JTextField();
+		txtetcScore.setBounds(1010,180,60,30);
+		jPanel.add(txtetcScore);
 		
 //		Total_Score
-		JLabel Total_Score = new JLabel("Total_Score");
-		Total_Score.setBounds(650,170,100,40);
+		JLabel Total_Score = new JLabel("T_Score");
+		Total_Score.setBounds(1070,170,90,40);
 		Total_Score.setFont(new Font("Verdana", Font.PLAIN,15));
 		jPanel.add(Total_Score);
 		
 		txtTotal_Score = new JTextField();
-		txtTotal_Score.setBounds(720,180,60,30);
+		txtTotal_Score.setBounds(1170,180,60,30);
 		jPanel.add(txtTotal_Score);
 		
 //		btnInsert
@@ -861,43 +865,47 @@ public class PrimaryPanel extends JPanel {
 		JTable jTable = new JTable();
 		DefaultTableModel model = new DefaultTableModel();
 
-		ArrayList<DescribeTableVO> arrDescribeTableVO = dbConnect.getTableDescription("CourseDetails");
-		Object[] columnsName = new Object[arrDescribeTableVO.size()];
-		for (int i = 0; i < arrDescribeTableVO.size(); i++) {
-			columnsName[i] = arrDescribeTableVO.get(i).getColumn_name();
-		}
-		model.setColumnIdentifiers(columnsName);
-
-		Object[] rowData = new Object[arrDescribeTableVO.size()];
-		ArrayList<CourseDetailsVO> arrCourseDetailsVO = dbConnect.selectCourseDetails(condition);
-		for (int i = 0; i < arrCourseDetailsVO.size(); i++) {
-			rowData[0] = arrCourseDetailsVO.get(i).getStudent_ID();
-			rowData[1] = arrCourseDetailsVO.get(i).getCourse_ID();
-			rowData[2] = arrCourseDetailsVO.get(i).getProfessor_ID();
-			rowData[3] = arrCourseDetailsVO.get(i).getAttend_Score();
-			rowData[4] = arrCourseDetailsVO.get(i).getMiddle_Score();
-			rowData[5] = arrCourseDetailsVO.get(i).getFinal_Score();
-			rowData[6] = arrCourseDetailsVO.get(i).getetc_Score();
-			rowData[7] = arrCourseDetailsVO.get(i).getTotal_Score();
-			rowData[8] = arrCourseDetailsVO.get(i).getGrade_Point();			
-			
-			model.addRow(rowData);
-		}
-
-		jTable.setModel(model);
-		jTable.setPreferredScrollableViewportSize(jTable.getPreferredSize());
-		jTable.setFillsViewportHeight(true);
-		jTable.getTableHeader().setFont(new Font("Verdana", Font.PLAIN, 17));
-		jTable.setFont(new Font("Verdana", Font.PLAIN, 17));
-		jTable.setRowHeight(20);
-		jTable.getTableHeader().setReorderingAllowed(false);
-
-		jScollPane = new JScrollPane(jTable);
-		jScollPane.setPreferredSize(new Dimension(650, 150));
-		jScollPane.setBounds(75, 280, 650, 150);
-//		jScollPane.getVerticalScrollBar().setValue(jScollPane.getVerticalScrollBar().getMaximum());
-		
-		jPanel.add(jScollPane);
+//		ArrayList<DescribeTableVO> arrDescribeTableVO = dbConnect.getTableDescription("CourseDetails");
+//		Object[] columnsName = new Object[arrDescribeTableVO.size()];
+//		for (int i = 0; i < arrDescribeTableVO.size(); i++) {
+//			columnsName[i] = arrDescribeTableVO.get(i).getColumn_name();
+//		}
+//		model.setColumnIdentifiers(columnsName);
+//
+//		Object[] rowData = new Object[arrDescribeTableVO.size()];
+//		ArrayList<CourseDetailsVO> arrCourseDetailsVO = dbConnect.selectCourseDetails(condition);
+//		for (int i = 0; i < arrCourseDetailsVO.size(); i++) {
+//			rowData[0] = arrCourseDetailsVO.get(i).getStudent_ID();
+//			rowData[1] = arrCourseDetailsVO.get(i).getCourse_ID();
+//			rowData[2] = arrCourseDetailsVO.get(i).getProfessor_ID();
+//			rowData[3] = arrCourseDetailsVO.get(i).getAttend_Score();
+//			rowData[4] = arrCourseDetailsVO.get(i).getMiddle_Score();
+//			rowData[5] = arrCourseDetailsVO.get(i).getFinal_Score();
+//			rowData[6] = arrCourseDetailsVO.get(i).getetcScore();
+//			rowData[7] = arrCourseDetailsVO.get(i).getTotal_Score();
+//			rowData[8] = arrCourseDetailsVO.get(i).getGrade_Podouble();
+//			
+//			
+//
+//			
+//			
+//			model.addRow(rowData);
+//		}
+//
+//		jTable.setModel(model);
+//		jTable.setPreferredScrollableViewportSize(jTable.getPreferredSize());
+//		jTable.setFillsViewportHeight(true);
+//		jTable.getTableHeader().setFont(new Font("Verdana", Font.PLAIN, 17));
+//		jTable.setFont(new Font("Verdana", Font.PLAIN, 17));
+//		jTable.setRowHeight(20);
+//		jTable.getTableHeader().setReorderingAllowed(false);
+//
+//		jScollPane = new JScrollPane(jTable);
+//		jScollPane.setPreferredSize(new Dimension(650, 150));
+//		jScollPane.setBounds(75, 280, 650, 150);
+////		jScollPane.getVerticalScrollBar().setValue(jScollPane.getVerticalScrollBar().getMaximum());
+//		
+//		jPanel.add(jScollPane);
 
 		return jPanel;
 	}
@@ -935,7 +943,7 @@ public class PrimaryPanel extends JPanel {
 					case "Course":
 						tempPanel = getCourseTable(condition);
 						break;
-					case "Course_Details":
+					case "CourseDetails":
 						tempPanel = getCourseDetailsTable(condition);
 						break;
 					}
@@ -947,7 +955,6 @@ public class PrimaryPanel extends JPanel {
 					validate();
 					repaint();
 					break;
-					
 				case "Insert":
 					mainPanel.removeAll();
 					mainPanel.setLayout(null);
@@ -958,32 +965,32 @@ public class PrimaryPanel extends JPanel {
 	
 					switch (tableName) {
 					case "Student":
-						dbConnect.insertStudent(txtStudent_ID.getText(), txtStudent_Name.getText(),Integer.parseInt(txtStudent_RRN.getText()), txtStudent_Address.getText(), 
-								 txtStudent_Phone.getText(), txtStudent_Email.getText(),txtStudent_Image.getText(),txtDepartment_ID.getText(), txtProfessor_ID.getText(),
-								 Integer.parseInt(txtSemester.getText()), Integer.parseInt(txtYear.getText()));
+//						dbConnect.insertStudent(txtStudent_ID.getText(), txtStudent_Name.getText(),Integer.parseInt(txtStudent_RRN.getText()), txtStudent_Address.getText(), 
+//								 txtStudent_Phone.getText(), txtStudent_Email.getText(),txtStudent_Image.getText(),txtDepartment_ID.getText(), txtProfessor_ID.getText(),
+//								 Integer.parseInt(txtSemester.getText()), Integer.parseInt(txtYear.getText()));
 						tempPanel = getStudentTable(condition);
 						break;
 						
 					case "Professor":
-						dbConnect.insertProfessor(txtProfessor_ID.getText(), txtProfessor_Name.getText(), Integer.parseInt(txtProfessor_RRN.getText()),  txtProfessor_Address.getText(), txtProfessor_Phone.getText(), 
-								txtProfessor_Email.getText(),txtProfessor_Image.getText(),txtDepartment_ID.getText());
+//						dbConnect.insertProfessor(txtProfessor_ID.getText(), txtProfessor_Name.getText(), Integer.parseInt(txtProfessor_RRN.getText()),  txtProfessor_Address.getText(), txtProfessor_Phone.getText(), 
+//								txtProfessor_Email.getText(),txtProfessor_Image.getText(),txtDepartment_ID.getText());
 						tempPanel = getProfessorTable(condition);
 							
 						break;
 					case "Department":
-						dbConnect.insertDepartment(txtDepartment_ID.getText(), txtDepartment_Name.getText(), txtDepartment_Phone.getText());
-								
+//						dbConnect.insertDepartment(txtDepartment_ID.getText(), txtDepartment_Name.getText(), txtDepartment_Phone.getText());
+//								
 						tempPanel = getDepartmentTable(condition);
 						break;
 					case "Course":
-						dbConnect.insertCourse(txtCourse_ID.getText(), txtProfessor_ID.getText(), txtCourse_Title.getText(),Integer.parseInt(txtCredit.getText()),
-								 txtClass_Time.getText(), txtRoom.getText(),txtDepartment_ID.getText());
+//						dbConnect.insertCourse(txtCourse_ID.getText(), txtProfessor_ID.getText(), txtCourse_Title.getText(),Integer.parseInt(txtCredit.getText()),
+//								 txtClass_Time.getText(), txtRoom.getText(),txtDepartment_ID.getText());
 						tempPanel = getCourseTable(condition);
 						break;
 					case "CourseDetails":
-						dbConnect.insertCourseDetails(txtStudent_ID.getText(), txtCourse_ID.getText(), txtProfessor_ID.getText(),
-								Double.parseDouble(txtAttend_Score.getText()), Double.parseDouble(txtMiddle_Score.getText()), Double.parseDouble(txtFinal_Score.getText()),
-								Double.parseDouble(txtetc_Score.getText()),Double.parseDouble(txtTotal_Score.getText()), Double.parseDouble(txtGrade_Point.getText()));
+//						dbConnect.insertCourseDetails(txtStudent_ID.getText(), txtCourse_ID.getText(), txtProfessor_ID.getText(),
+//								Double.parseDouble(txtAttend_Score.getText()), Double.parseDouble(txtMiddle_Score.getText()), Double.parseDouble(txtFinal_Score.getText()),
+//								Double.parseDouble(txtetcScore.getText()),Double.parseDouble(txtTotal_Score.getText()), Double.parseDouble(txtGrade_Podouble.getText()));
 						tempPanel = getCourseTable(condition);
 						break;
 					}
@@ -1044,6 +1051,8 @@ public class PrimaryPanel extends JPanel {
 					break;
 				
 			}
+			
+
 			
 		}
 
